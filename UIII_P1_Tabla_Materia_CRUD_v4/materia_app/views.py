@@ -26,9 +26,10 @@ def editarMateria(request):
     codigo=request.POST["txtcodigo"]
     nombre=request.POST["txtnombre"]
     creditos=request.POST["numcreditos"]
-    Materia.nombre=nombre
-    Materia.creditos=creditos
-    Materia.save()
+    materia=Materia.objects.get(codigo=codigo)
+    materia.nombre=nombre
+    materia.creditos=creditos
+    materia.save()
     return redirect("/")
 
 def borrarMateria(request,codigo):
